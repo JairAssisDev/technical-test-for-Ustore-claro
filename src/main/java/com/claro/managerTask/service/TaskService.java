@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -21,7 +22,7 @@ public class TaskService {
     }
 
     @Transactional(readOnly = true)
-    public List<TaskItem> getAll() {
+    public List<TaskItem> getAllTask() {
         return taskRepository.findAll();
     }
 
@@ -31,6 +32,7 @@ public class TaskService {
                 () -> new RuntimeException("Tarefa não encontrada.")
         );
         task.setCompleted(true);
+        task.setUpdatedAt(LocalDateTime.now());
         return task;
     }
 
@@ -41,4 +43,5 @@ public class TaskService {
         );
         taskRepository.delete(task);
     }
+
 }

@@ -27,7 +27,7 @@ public class TaskItem {
     private String description;
 
     @Column(name = "completed")
-    private boolean completed;
+    private boolean completed = false;
 
     @Column(name = "created_At", nullable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
