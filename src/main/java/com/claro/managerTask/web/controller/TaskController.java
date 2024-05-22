@@ -31,15 +31,14 @@ public class TaskController {
         return ResponseEntity.ok(TaskMapper.toListDtoTask(tasks)).getBody();
     }
 
-    @DeleteMapping("/{description}")
-    public ResponseEntity<Void> removeTask(@PathVariable String description) {
-        taskService.removeTask(description);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> removeTask(@PathVariable Long id) {
+        taskService.removeTask(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-
-    @PatchMapping("/{description}")
-    public ResponseEntity<TaskResponseDto> markTaskAsCompleted(@PathVariable String description) {
-        TaskItem taskItem = taskService.finishTask(description);
+    @PatchMapping("/{id}")
+    public ResponseEntity<TaskResponseDto> markTaskAsCompleted(@PathVariable Long id) {
+        TaskItem taskItem = taskService.finishTask(id);
         return ResponseEntity.ok(TaskMapper.toDto(taskItem));
     }
 }

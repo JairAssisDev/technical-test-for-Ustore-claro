@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class TaskResponseDto {
 
+    private String id;
+
     private String title;
 
     private String description;

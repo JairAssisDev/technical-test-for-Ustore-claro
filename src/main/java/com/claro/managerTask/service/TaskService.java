@@ -27,8 +27,9 @@ public class TaskService {
     }
 
     @Transactional
-    public TaskItem finishTask(String descricao) {
-        TaskItem task = taskRepository.findByDescription(descricao).orElseThrow(
+    public TaskItem finishTask(Long id) {
+        System.out.println(id);
+        TaskItem task = taskRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("Tarefa não encontrada.")
         );
         task.setCompleted(true);
@@ -37,8 +38,8 @@ public class TaskService {
     }
 
     @Transactional
-    public void removeTask(String descricao) {
-        TaskItem task = taskRepository.findByDescription(descricao).orElseThrow(
+    public void removeTask(Long id) {
+        TaskItem task = taskRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("Tarefa não encontrada.")
         );
         taskRepository.delete(task);

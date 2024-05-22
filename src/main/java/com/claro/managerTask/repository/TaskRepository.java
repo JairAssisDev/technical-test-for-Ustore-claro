@@ -8,5 +8,5 @@ import java.util.Optional;
 
 
 public interface TaskRepository extends JpaRepository<TaskItem, Long> {
-    Optional<TaskItem> findByDescription(String description);
+
 }
