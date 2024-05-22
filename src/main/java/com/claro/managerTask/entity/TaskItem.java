@@ -34,4 +34,10 @@ public class TaskItem {
 
     @Column(name = "updated_At")
     private LocalDateTime updatedAt;
+
+    public TaskItem(String title, String description, boolean completed) {
+        this.title = title;
+        this.description = description;
+        this.completed = completed;
+    }
 }

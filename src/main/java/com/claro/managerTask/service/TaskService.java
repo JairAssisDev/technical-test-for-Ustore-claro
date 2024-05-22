@@ -28,11 +28,10 @@ public class TaskService {
 
     @Transactional
     public TaskItem finishTask(Long id) {
-        System.out.println(id);
         TaskItem task = taskRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("Tarefa não encontrada.")
         );
-        task.setCompleted(true);
+        //task.setCompleted(true);
         task.setUpdatedAt(LocalDateTime.now());
         return task;
     }
