@@ -1,6 +1,7 @@
 package com.claro.managerTask.service;
 
 import com.claro.managerTask.entity.TaskItem;
+import com.claro.managerTask.exception.ResourceNotFoundException;
 import com.claro.managerTask.repository.TaskRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -29,17 +30,17 @@ public class TaskService {
     @Transactional
     public TaskItem finishTask(Long id) {
         TaskItem task = taskRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("Tarefa não encontrada.")
+                () -> new ResourceNotFoundException("Tarefa não encontrada.")
         );
-        //task.setCompleted(true);
         task.setUpdatedAt(LocalDateTime.now());
+        task.setCompleted(true); // Marque a tarefa como concluída
         return task;
     }
 
     @Transactional
     public void removeTask(Long id) {
         TaskItem task = taskRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("Tarefa não encontrada.")
+                () -> new ResourceNotFoundException("Tarefa não encontrada.")
         );
         taskRepository.delete(task);
     }
