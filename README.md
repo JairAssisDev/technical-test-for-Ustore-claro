@@ -80,7 +80,7 @@ docker-compose up
 Testar as rotas:
 
 ```sh
-http://localhost:8080/swagger-ui
+http://localhost:8080/swagger-ui/index.html#/
 ```
 
 
